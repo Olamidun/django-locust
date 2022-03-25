@@ -6,10 +6,10 @@ from .models import Post, Comment
 
 fake = Faker()
 
-user = User.objects.get(pk=1)
+user = User.objects.get(pk=2)
 
 def generate_post():
-    body = [Post(title=f"title {_ + 2150}", body=fake.text(), user=user) for _ in range(10000)]
+    body = [Post(title=f"title {_ + 1100}", body=fake.text(), user=user) for _ in range(10000)]
 
     Post.objects.bulk_create(body)
     print("Done")
@@ -17,7 +17,7 @@ def generate_post():
 
 def generate_comment():
 
-    body = [Comment(post=Post.objects.get(pk= _ + 400), body=fake.text(), user=user) for _ in range(500)]
+    body = [Comment(post=Post.objects.get(pk= _ + 600), body=fake.text(), user=user) for _ in range(10000)]
 
     Comment.objects.bulk_create(body)
     print("Done")
