@@ -23,3 +23,16 @@ class ListPostSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'blog:post-detail'},
         }
     
+
+class ListPlainPostSerializer(object):
+
+    @staticmethod
+    def serialize_post(queryset):
+        return [
+            {
+                'url': f"http://localhost:8000/blog/post/{entry.pk}",
+                "title": entry.title,
+                'body': entry.body,
+                'user': entry.user.id
+            } for entry in queryset
+        ]
