@@ -9,7 +9,7 @@ fake = Faker()
 user = User.objects.get(pk=1)
 
 def generate_post():
-    body = [Post(title=f"title {_ + 101}", body=fake.text(), user=user) for _ in range(1000)]
+    body = [Post(title=f"title {_ + 1101}", body=fake.text(), user=user) for _ in range(1000)]
 
     Post.objects.bulk_create(body)
     print("Done")
